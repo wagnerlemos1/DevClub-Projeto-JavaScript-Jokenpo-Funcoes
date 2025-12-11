@@ -1,49 +1,50 @@
+// capturando elementos do DOM
 const result = document.querySelector('.result')
-const score = document.querySelector('#meuScore')
-const scoreMachine = document.querySelector('#machineScore')
+const myScore = document.querySelector('#meuScore')
+const myMachine = document.querySelector('#machineScore')
 
-let meuScore = 0
-let maquina = 0
+// variaveis de pontuação
+let scoreHuman = 0
+let scoreMachine = 0
 
 
+// função que captura a escolha do humano
 const clickHuman = (humanChoice) => {
-    playGame = (clickHuman, playMachine())
+    playGame(humanChoice, playMachine())
+
 }
 
-
-
+// função que gera a escolha da maquina
 const playMachine = () => {
-    const choice = ['rock', 'paper', 'scissors']
+    const choices = ['rock', 'paper', 'scissors']
     const random = Math.floor(Math.random() * 3)
 
-    return [random]
+    return choices[random] // retorna a escolha da maquina 
 }
 
-
-const playGame = () => {
-
+// função que executa o jogo
+const playGame = (human, machine) => {
     if (human === machine) {
-        result.innerHTML = 'Voce empatou'
-    } else if ((human === 'paper' && machine === 'rock') ||
-        (human === 'rock' && machine === 'scissors') ||
-        (human === 'scissors' && machine === 'paper')) {
-        result.innerHTML = 'Voce ganhou'
-        score.innerHTML = meuScore
-        meuScore++
-
+        result.innerHTML = 'It´s a tie!'
+    } else if ((human === 'paper' && machine === 'rock' ||
+        (human === 'rock' && machine === 'scissors' ||
+            (human === 'scissors' && machine === 'paper')))) {
+        scoreHuman++
+        myScore.innerHTML = scoreHuman
+        result.innerHTML = 'You Win!'
     } else {
-        result.innerHTML = 'Voce perdeu amigao'
-        scoreMachine = maquina
-        maquina++
+        scoreMachine++
+        myMachine.innerHTML = scoreMachine
+        result.innerHTML = 'You Lose!'
     }
+
+
 }
 
-
-
-
-
-/* papel -> pedra -> tesoura */
-
+// raciocionio para o jogo 
+// paper ganha de rock
+// rock ganha de scissors
+// scissors ganha de paper
 
 
 
